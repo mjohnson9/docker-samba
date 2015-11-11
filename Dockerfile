@@ -7,8 +7,10 @@ RUN apt-get update \
 
 ADD smb.conf /etc/samba/smb.conf
 ADD create-users.sh /etc/samba/create-users.sh
+ADD entrypoint.sh /root/entrypoint.sh
 ADD start.sh /root/start.sh
 
+ENTRYPOINT /root/entrypoint.sh
 CMD /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
 
 VOLUME /data/homes /data/media
