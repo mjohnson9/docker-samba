@@ -5,10 +5,10 @@ RUN apt-get update \
  && apt-get install -y samba samba-common && \
  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD smb.conf /etc/samba/smb.conf
-ADD create-users.sh /etc/samba/create-users.sh
-ADD entrypoint.sh /root/entrypoint.sh
-ADD start.sh /root/start.sh
+COPY smb.conf /etc/samba/smb.conf
+COPY create-users.sh /etc/samba/create-users.sh
+COPY entrypoint.sh /root/entrypoint.sh
+COPY start.sh /root/start.sh
 
 ENTRYPOINT /root/entrypoint.sh
 CMD /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
