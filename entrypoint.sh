@@ -1,10 +1,10 @@
 #!/bin/sh
 
 if [ -f /etc/samba/smb.conf ]; then
-	if [ -z "$HOSTNAME" ]; then
-		HOSTNAME="$(hostname -s)"
+	if [ -z "$SMB_HOST" ]; then
+		SMB_HOST="$(hostname -s)"
 	fi
-	sed -i "s/SERVER/${HOSTNAME}/g" /etc/samba/smb.conf
+	sed -i "s/SERVER/${SMB_HOST}/g" /etc/samba/smb.conf
 fi
 
 exec "$@"
