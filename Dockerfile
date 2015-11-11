@@ -7,11 +7,10 @@ RUN apt-get update \
 
 COPY smb.conf /etc/samba/smb.conf
 COPY create-users.sh /etc/samba/create-users.sh
-COPY entrypoint.sh /root/entrypoint.sh
+COPY fix-config.sh /root/fix-config.sh
 COPY start.sh /root/start.sh
 
-ENTRYPOINT /root/entrypoint.sh
-CMD /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
+CMD /root/fix-config.sh && /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
 
 VOLUME /data/homes /data/media
 EXPOSE 139 445
