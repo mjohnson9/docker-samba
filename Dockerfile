@@ -12,6 +12,6 @@ COPY start.sh /root/start.sh
 
 CMD /root/fix-config.sh && /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
 
-VOLUME /data/homes /data/media
+VOLUME /data/homes /data/media /etc/samba/users.conf
 EXPOSE 139 445
 EXPOSE 137/udp 138/udp
