@@ -10,7 +10,7 @@ COPY create-users.sh /etc/samba/create-users.sh
 COPY fix-config.sh /root/fix-config.sh
 COPY start.sh /root/start.sh
 
-CMD /root/fix-config.sh && /etc/samba/create-users.sh && rm /etc/samba/create-users.sh && exec /root/start.sh
+CMD /root/fix-config.sh && /etc/samba/create-users.sh && exec /root/start.sh
 
 VOLUME /data/homes /data/media /etc/samba/users.conf
 EXPOSE 139 445
